@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import 'assets/CreativeTim/css/nextjs-material-dashboard.css';
 import React from 'react';
 import Head from 'next/head';
-import Admin from 'layouts/CreativeTim/Admin';
+import Layout from 'layouts/Layout';
 
 
 function MyApp({ Component, pageProps }) {
@@ -15,9 +15,9 @@ function MyApp({ Component, pageProps }) {
         />
         <title>D&D DM Sidekick</title>
       </Head>
-      <Admin>
+      <Layout>
         <Component {...pageProps} />
-      </Admin>
+      </Layout>
     </React.Fragment>
   )
 }
