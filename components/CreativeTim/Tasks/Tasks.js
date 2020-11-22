@@ -15,7 +15,7 @@ import Edit from "@material-ui/icons/Edit";
 import Close from "@material-ui/icons/Close";
 import Check from "@material-ui/icons/Check";
 // core components/CreativeTim
-import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/components/CreativeTim/tasksStyle.js";
+import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/components/tasksStyle.js";
 
 const useStyles = makeStyles(styles);
 

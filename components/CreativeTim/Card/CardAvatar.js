@@ -8,7 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 // core components/CreativeTim
 
-import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/components/CreativeTim/cardAvatarStyle.js";
+import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/components/cardAvatarStyle.js";
 
 const useStyles = makeStyles(styles);
 

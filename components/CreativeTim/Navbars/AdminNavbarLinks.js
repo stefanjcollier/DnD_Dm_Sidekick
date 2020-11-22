@@ -20,7 +20,7 @@ import CustomInput from "components/CreativeTim/CustomInput/CustomInput.js";
 import Button from "components/CreativeTim/CustomButtons/Button.js";
 import useWindowSize from "components/CreativeTim/Hooks/useWindowSize.js";
 
-import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/components/CreativeTim/headerLinksStyle.js";
+import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/components/headerLinksStyle.js";
 
 const useStyles = makeStyles(styles);
 

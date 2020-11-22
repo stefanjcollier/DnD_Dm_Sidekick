@@ -13,7 +13,7 @@ import FixedPlugin from "components/CreativeTim/FixedPlugin/FixedPlugin.js";
 
 import routes from "routes.js";
 
-import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/layouts/CreativeTim/rtlStyle.js";
+import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/layouts/rtlStyle.js";
 
 import bgImage from "assets/CreativeTim/img/sidebar-2.jpg";
 import logo from "assets/CreativeTim/img/reactlogo.png";

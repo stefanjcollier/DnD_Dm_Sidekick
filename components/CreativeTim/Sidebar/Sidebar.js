@@ -16,7 +16,7 @@ import Icon from "@material-ui/core/Icon";
 import AdminNavbarLinks from "components/CreativeTim/Navbars/AdminNavbarLinks.js";
 import RTLNavbarLinks from "components/CreativeTim/Navbars/RTLNavbarLinks.js";
 
-import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/components/CreativeTim/sidebarStyle.js";
+import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/components/sidebarStyle.js";
 
 const useStyles = makeStyles(styles);
 

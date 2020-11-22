@@ -10,7 +10,7 @@ import Input from "@material-ui/core/Input";
 import Clear from "@material-ui/icons/Clear";
 import Check from "@material-ui/icons/Check";
 // core components/CreativeTim
-import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/components/CreativeTim/customInputStyle.js";
+import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/components/customInputStyle.js";
 
 const useStyles = makeStyles(styles);
 

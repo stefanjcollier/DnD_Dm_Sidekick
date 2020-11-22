@@ -8,7 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 // @material-ui/icons
 import Close from "@material-ui/icons/Close";
 // core components/CreativeTim
-import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/components/CreativeTim/snackbarContentStyle.js";
+import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/components/snackbarContentStyle.js";
 
 const useStyles = makeStyles(styles);
 

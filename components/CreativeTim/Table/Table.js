@@ -8,7 +8,7 @@ import TableRow from "@material-ui/core/TableRow";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 // core components/CreativeTim
-import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/components/CreativeTim/tableStyle.js";
+import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/components/tableStyle.js";
 
 const useStyles = makeStyles(styles);
 

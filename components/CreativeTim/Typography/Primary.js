@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 // @material-ui/core components/CreativeTim
 import { makeStyles } from "@material-ui/core/styles";
 // core components/CreativeTim
-import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/components/CreativeTim/typographyStyle.js";
+import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/components/typographyStyle.js";
 
 const useStyles = makeStyles(styles);
 

@@ -13,7 +13,7 @@ import Card from "components/CreativeTim/Card/Card.js";
 import CardBody from "components/CreativeTim/Card/CardBody.js";
 import CardHeader from "components/CreativeTim/Card/CardHeader.js";
 
-import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/components/CreativeTim/customTabsStyle.js";
+import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/components/customTabsStyle.js";
 
 const useStyles = makeStyles(styles);
 
