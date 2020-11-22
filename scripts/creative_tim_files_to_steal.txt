@@ -1,0 +1,5 @@
+components/
+assets/
+layouts/
+next.config.js
+routes.js

@@ -17,18 +17,14 @@ function usage {
   echo "  CT_REPO - the absolute path to the Creative Tim repo root"
 }
 
-function replace_repo { sed "s|$CT_REPO|$THIS_REPO|"; }
+function replace_repo { sed "s:$CT_REPO:$THIS_REPO:"; }
 
 function add_namespace_to_filename {
-  sed 's|components|components/CreativeTim|' |
-  sed 's|assets|assets/CreativeTim|' |
-  sed 's|layouts|layouts/CreativeTim|'
+  sed -E 's:(components|assets|layouts):\1/CreativeTim:'
 }
 
 function add_namespaces_in_file {
-  sed 's|from "components|from "components/CreativeTim|' |
-  sed 's|from "assets|from "assets/CreativeTim|' |
-  sed 's|from "layouts|from "layouts/CreativeTim|'
+  sed -E 's:from "(components|assets|layouts):from "\1/CreativeTim:'
 }
 
 function copy_and_namespace_file {
@@ -36,16 +32,22 @@ function copy_and_namespace_file {
   local dest_file
   dest_file=$(echo "$absolute_ct_file" | replace_repo | add_namespace_to_filename)
   mkdir -p "$(dirname "$dest_file")"
-  cat "$absolute_ct_file" | add_namespace_to_filename > "$dest_file"
+  if [[ $dest_file =~ \.(jpg|jpeg|png|gif|svg)$ ]]; then
+    cp "$absolute_ct_file" "$dest_file"
+  else
+    cat "$absolute_ct_file" | add_namespace_to_filename > "$dest_file"
+  fi
+
 }
 
 function files_to_steal {
-  find "$CT_REPO/components" -type f
-  find "$CT_REPO/assets"     -type f
-  find "$CT_REPO/layouts"    -type f
+  local file
+  for file in $(cat ./scripts/creative_tim_files_to_steal.txt); do
+    find "$CT_REPO/$file" -type f
+  done
 }
 
-set -e
+set -ex
 
 THIS_REPO=$(pwd)
 CT_REPO=$1
