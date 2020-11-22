@@ -29,7 +29,7 @@ export default function Header(props) {
   function makePageTitle() {
     var name = defaultPageTitle;
     props.routes.map((prop) => {
-      if (router.route.indexOf(prop.layout + prop.path) !== -1) {
+      if (router.route.indexOf(prop.path) !== -1) {
         name = prop.name;
       }
       return null;

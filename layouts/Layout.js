@@ -6,18 +6,18 @@ import PerfectScrollbar from "perfect-scrollbar";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 // @material-ui/core components/CreativeTim
 import { makeStyles } from "@material-ui/core/styles";
-// core components/CreativeTim
-import Navbar from "components/CreativeTim/Navbars/Navbar.js";
-import Sidebar from "components/CreativeTim/Sidebar/Sidebar.js";
+
 
 // core components
+import Sidebar from "components/Sidebar.js";
+import Header from "components/Header/Header.js";
 import Footer from "components/Footer.js";
 
 import routes from "routes.js";
 
 import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/layouts/adminStyle.js";
 
-import bgImage from "assets/CreativeTim/img/sidebar-2.jpg";
+import bgImage from "assets/CreativeTim/img/sidebar-4.jpg";
 import logo from "assets/CreativeTim/img/reactlogo.png";
 
 let ps;
@@ -75,25 +75,25 @@ export default function Admin({ children, ...rest }) {
       window.removeEventListener("resize", resizeFunction);
     };
   }, [mainPanel]);
+
   return (
     <div className={classes.wrapper}>
-      {/*<Sidebar*/}
-      {/*  routes={routes}*/}
-      {/*  logoText={"Creative Tim"}*/}
-      {/*  logo={logo}*/}
-      {/*  image={image}*/}
-      {/*  handleDrawerToggle={handleDrawerToggle}*/}
-      {/*  open={mobileOpen}*/}
-      {/*  color={color}*/}
-      {/*  {...rest}*/}
-      {/*/>*/}
+      <Sidebar
+        routes={routes}
+        logoText={"Sidekick"}
+        logo={logo}
+        image={image}
+        handleDrawerToggle={handleDrawerToggle}
+        open={mobileOpen}
+        color={color}
+        {...rest}
+      />
       <div className={classes.mainPanel} ref={mainPanel}>
-        <Navbar
+        <Header
           routes={routes}
           handleDrawerToggle={handleDrawerToggle}
           {...rest}
         />
-        {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
         <div className={classes.content}>
           <div className={classes.container}>{children}</div>
         </div>
