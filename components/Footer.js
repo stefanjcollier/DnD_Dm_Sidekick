@@ -29,30 +29,17 @@ export default function Footer(props) {
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <a href="" className={classes.block}>
-                Demo
+              <a href="https://demos.creative-tim.com/nextjs-material-dashboard/admin/dashboard" className={classes.block}>
+                Template Demo
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <a href="#blog" className={classes.block}>
-                Blog
+              <a href="https://docs.google.com/spreadsheets/d/1GYXhMCjH1nv3nXuM8DExOqck6J9eE4_jVnk77Ifx8J0/edit?usp=sharing" className={classes.block}>
+                Inspired By
               </a>
             </ListItem>
           </List>
         </div>
-        <p className={classes.right}>
-          <span>
-            &copy; {1900 + new Date().getYear()}{" "}
-            <a
-              href="https://www.creative-tim.com?ref=njsmd-footer"
-              target="_blank"
-              className={classes.a}
-            >
-              Creative Tim
-            </a>
-            , made with love for a better web
-          </span>
-        </p>
       </div>
     </footer>
   );
