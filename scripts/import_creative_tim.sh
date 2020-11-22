@@ -1,4 +1,4 @@
-#!/bin/bash#
+#!/bin/bash
 # Import the CreativeTim components, assets and layouts namespacing them to CreativeTim
 #  and fix any references to match the new CreativeTime namespace
 #

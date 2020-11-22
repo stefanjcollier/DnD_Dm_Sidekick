@@ -3,3 +3,4 @@ assets/
 layouts/
 next.config.js
 routes.js
+pages/_document.js
