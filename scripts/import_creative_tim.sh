@@ -45,7 +45,7 @@ function files_to_steal {
   find "$CT_REPO/layouts"    -type f
 }
 
-set -xe
+set -e
 
 THIS_REPO=$(pwd)
 CT_REPO=$1
