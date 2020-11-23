@@ -14,8 +14,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Icon from "@material-ui/core/Icon";
 // core components/CreativeTim
 import AdminNavbarLinks from "components/CreativeTim/Navbars/AdminNavbarLinks.js";
-import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/components/sidebarStyle.js";
 
+import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/components/sidebarStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function Sidebar(props) {
