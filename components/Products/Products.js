@@ -33,8 +33,8 @@ class Products extends Component {
   };
 
   productList = () => {
-    this.props.products.map( (productObj) => {
-        [productObj.name, productObj.price]
+    return this.state.products.map( (productObj) => {
+        return [productObj.name, productObj.price];
       }
     )
   };
@@ -51,20 +51,7 @@ class Products extends Component {
           <Table
             tableHeaderColor="primary"
             tableHead={["Name", "Base Cost", "Weight (lbs)", ""]}
-            tableData={[
-              ["Dakota Rice", "Niger", "Oud-Turnhout", "$36,738"],
-              ["Minerva Hooper", "Curaçao", "Sinaai-Waas", "$23,789"],
-              ["Sage Rodriguez", "Netherlands", "Baileux", "$56,142"],
-              ["Philip Chaney", "Korea, South", "Overland Park", "$38,735"],
-              ["Doris Greene", "Malawi", "Feldkirchen in Kärnten", "$63,542"],
-              ["Mason Porter", "Chile", "Gloucester", "$78,615"],
-              ["Mason Porter", "Chile", "Gloucester", "$78,615"],
-              ["Mason Porter", "Chile", "Gloucester", "$78,615"],
-              ["Mason Porter", "Chile", "Gloucester", "$78,615"],
-              ["Mason Porter", "Chile", "Gloucester", "$78,615"],
-              ["Mason Porter", "Chile", "Gloucester", "$78,615"],
-              ["Mason Porter", "Chile", "Gloucester", "$78,615"],
-            ]}
+            tableData={this.productList()}
           />
         </CardBody>
       </Card>
