@@ -18,7 +18,7 @@ import routes from "routes.js";
 import styles from "assets/CreativeTim/jss/nextjs-material-dashboard/layouts/adminStyle.js";
 
 import bgImage from "assets/CreativeTim/img/sidebar-4.jpg";
-import logo from "assets/CreativeTim/img/reactlogo.png";
+import logo from "assets/img/favicon_inverted.png";
 
 let ps;
 
