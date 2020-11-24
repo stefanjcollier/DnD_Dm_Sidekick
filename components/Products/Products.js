@@ -16,18 +16,26 @@ class Products extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: []
+      products: [],
+      host: this.determineHost(),
     };
   }
 
   componentDidMount() {
-    console.log(process.env.NODE_ENV)
     this.refreshList();
+  }
+
+  determineHost = () => {
+    if (process.env.NODE_ENV === 'production') {
+      return 'https://dm-sidekick-api.herokuapp.com'
+    } else {
+      return 'http://localhost:8000'
+    }
   }
 
   refreshList = () => {
     axios
-      .get("http://localhost:8000/api/products/")
+      .get(`${this.state.host}/api/products/`)
       .then(res => {
         console.log(res.data);
         this.setState({ products: res.data})
