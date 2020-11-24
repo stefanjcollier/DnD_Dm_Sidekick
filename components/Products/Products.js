@@ -21,6 +21,7 @@ class Products extends Component {
   }
 
   componentDidMount() {
+    console.log(process.env.NODE_ENV)
     this.refreshList();
   }
 
@@ -39,7 +40,7 @@ class Products extends Component {
         return [
           productObj.name,
           productObj.price_str,
-          productObj.weight,
+          productObj.weight.toString(),
         ];
       }
     )
@@ -56,7 +57,7 @@ class Products extends Component {
         <CardBody>
           <Table
             tableHeaderColor="primary"
-            tableHead={["Name", "Base Cost", "Weight (lbs)", ""]}
+            tableHead={["Name", "Base Cost", "Weight (lbs)"]}
             tableData={this.productList()}
           />
         </CardBody>
