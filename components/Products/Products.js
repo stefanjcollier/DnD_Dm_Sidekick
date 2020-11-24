@@ -6,21 +6,17 @@ import Table from "components/CreativeTim/Table/Table.js";
 import Card from "components/CreativeTim/Card/Card.js";
 import CardHeader from "components/CreativeTim/Card/CardHeader.js";
 import CardBody from "components/CreativeTim/Card/CardBody.js";
+// Axios
+import axios from "axios";
 
 import styles from "assets/jss/products.js";
 
-const static_products = [
-  {name: 'Plate mail', price: 1500},
-  {name: 'Spyglass', price: 1000},
-  {name: 'Half plate', price: 750},
-  {name: 'Breastplate', price: 400},
-]
 
 class Products extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: static_products
+      products: []
     };
   }
 
@@ -29,12 +25,22 @@ class Products extends Component {
   }
 
   refreshList = () => {
-    this.setState({ products: static_products })
+    axios
+      .get("http://localhost:8000/api/products/")
+      .then(res => {
+        console.log(res.data);
+        this.setState({ products: res.data})
+      })
+      .catch(err => console.log(err));
   };
 
   productList = () => {
     return this.state.products.map( (productObj) => {
-        return [productObj.name, productObj.price];
+        return [
+          productObj.name,
+          productObj.price_str,
+          productObj.weight,
+        ];
       }
     )
   };
