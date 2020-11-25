@@ -53,7 +53,7 @@ export default function Products(props) {
           productObj.price_str,
           productObj.weight.toString(),
           <Button
-            color='info'
+            color='success'
             onClick={() => {
               addProductToBasket(productObj)
             }}
@@ -84,7 +84,7 @@ export default function Products(props) {
   const classes = useStyles();
   return (
     <GridContainer>
-      <GridItem xs={9} sm={9} md={9}>
+      <GridItem xs={8} sm={8} md={8}>
         <Card>
           <CardHeader color="primary">
             <h4 className={classes.cardTitleWhite}>Products</h4>
@@ -98,10 +98,11 @@ export default function Products(props) {
           </CardBody>
         </Card>
       </GridItem>
-      <GridItem xs={3} sm={3} md={3}>
+
+      <GridItem xs={4} sm={4} md={4}>
         <Card>
           <CardHeader color="primary">
-            <h4 className={classes.cardTitleWhite}>Products</h4>
+            <h4 className={classes.cardTitleWhite}>Basket</h4>
           </CardHeader>
           <CardBody>
             <Table
