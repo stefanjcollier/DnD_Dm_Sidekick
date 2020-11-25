@@ -14,6 +14,14 @@ export default class Price {
       )
   }
 
+  times(number) {
+    return new Price(
+      this.gold * number,
+      this.silver * number,
+      this.copper * number,
+    )
+  }
+
   static price_str(gold, silver, copper){
     let items = []
     if (gold) {
