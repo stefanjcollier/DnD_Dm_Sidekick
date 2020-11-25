@@ -286,6 +286,12 @@ const buttonStyle = {
     lineHeight: "1.5",
     borderRadius: "0.2rem",
   },
+  xs: {
+    padding: "0.20625rem 0.75rem",
+    fontSize: "0.2875rem",
+    lineHeight: "1.5",
+    borderRadius: "0.2rem",
+  },
   round: {
     borderRadius: "30px",
   },
@@ -334,6 +340,19 @@ const buttonStyle = {
       "& svg": {
         width: "17px",
         height: "17px",
+      },
+    },
+    "&$xs": {
+      height: "15px",
+      minWidth: "15px",
+      width: "15px",
+      "& .fab,& .fas,& .far,& .fal,& .material-icons": {
+        fontSize: "8px",
+        lineHeight: "13px",
+      },
+      "& svg": {
+        width: "8px",
+        height: "8px",
       },
     },
   },
