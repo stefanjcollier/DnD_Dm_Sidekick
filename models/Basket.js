@@ -1,34 +1,38 @@
 import Price from "models/Price"
 
 export default class Basket {
-  constructor() {
-    this.items = {}
-  }
-
-  addToBasket(product) {
-    this.items[product] = this.items[product] || 0
-    this.items[product] = this.items[product] + 1
-  }
-
-  removeFromBasket(product) {
-    if (this.items[product]){
-      this.items[product] = this.items[product] - 1
-      if (this.items[product] <= 0) {
-        delete this.items[product]
-      }
-    }
-  }
-
-  totalPrice() {
-    let runningTotal = new Price();
-    for(const [product, count] of productCountPairs){
-      runningTotal = runningTotal.add(product.price.times(count))
-    }
-    return runningTotal
+  constructor(items, counts) {
+    this.items = items || {}
+    this.counts = counts || {}
   }
 
   productCountPairs() {
-    Object.entries(this.items)
+    return Object.entries(this.items).map((idAndProduct) => {
+      const [id, product] = idAndProduct
+      return [product, this.counts[id]]
+    })
+  }
+
+  totalPrice() {
+    return this.productCountPairs().reduce((runningTotal, productAndCount) => {
+      const [product, count] = productAndCount;
+      return runningTotal.add(product.price.times(count))
+    }, new Price())
+  }
+
+  addToBasket(product) {
+    this.items[product.id] = product
+    this.counts[product.id] = this.counts[product.id] + 1
+    return new Basket(this.items, this.counts)
+  }
+
+  removeFromBasket(product) {
+    this.counts[product.id] = this.counts[product.id] -  1
+    if (this.counts[product.id] < 1) {
+      delete this.counts[product.id]
+      delete this.items[product.id]
+    }
+    return new Basket(this.items, this.counts)
   }
 
 }
