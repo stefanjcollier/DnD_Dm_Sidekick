@@ -22,6 +22,8 @@ const useStyles = makeStyles(styles);
 
 export default function Products(props) {
   const [products, setProducts] = useState([]);
+  const [basket, setBasket] = useState([]);
+
   const [host, setHost] = useState(() => {
     if (process.env.NODE_ENV === 'production') {
       return 'https://dm-sidekick-api.herokuapp.com'
@@ -40,6 +42,10 @@ export default function Products(props) {
       .catch(err => console.log(err));
   };
 
+  const addProductToBasket = (product) => {
+    setBasket(basket.concat([product]))
+  };
+
   const productList = () => {
     return products.map( (productObj) => {
         return [
@@ -48,7 +54,9 @@ export default function Products(props) {
           productObj.weight.toString(),
           <Button
             color='info'
-            onClick={() => { alert(productObj.name)}}
+            onClick={() => {
+              addProductToBasket(productObj)
+            }}
           >
             <AddShoppingCart/>
           </Button>
@@ -56,6 +64,17 @@ export default function Products(props) {
       }
     )
   };
+
+  const basketList = () => {
+]    return basket.map( (productObj) => {
+        return [
+          productObj.name,
+          productObj.price_str,
+        ];
+      }
+    )
+  };
+
 
   useEffect(() => {
       refreshList();
@@ -80,7 +99,18 @@ export default function Products(props) {
         </Card>
       </GridItem>
       <GridItem xs={3} sm={3} md={3}>
-        <Basket />
+        <Card>
+          <CardHeader color="primary">
+            <h4 className={classes.cardTitleWhite}>Products</h4>
+          </CardHeader>
+          <CardBody>
+            <Table
+              tableHeaderColor="primary"
+              tableHead={["Name", "Base Cost"]}
+              tableData={basketList()}
+            />
+          </CardBody>
+        </Card>
       </GridItem>
     </GridContainer>
   )
