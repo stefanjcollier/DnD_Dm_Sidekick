@@ -72,6 +72,17 @@ export default function Products(props) {
         `x${count}`,
         product.name,
         product.price_str,
+        <Button
+          justIcon
+          round
+          size="xs"
+          color='danger'
+          onClick={() => {
+            setBasket(basket.removeFromBasket(product))
+          }}
+        >
+          -
+        </Button>
       ];
       }
     )
@@ -109,7 +120,6 @@ export default function Products(props) {
         <Card>
           <CardHeader color="primary">
             <h4 className={classes.cardTitleWhite}>Basket</h4>
-            <p className={classes.cardCategoryWhite}>Total: {basket.totalPrice().toString()}</p>
           </CardHeader>
           <CardBody>
             <Table
@@ -117,6 +127,9 @@ export default function Products(props) {
               tableHead={['', "Name", "Cost"]}
               tableData={basketData()}
             />
+              <Table
+                tableData={[['', <b>Total</b>, <b>{basket.totalPrice().toString()}</b>]]}
+              />
           </CardBody>
         </Card>
       </GridItem>
