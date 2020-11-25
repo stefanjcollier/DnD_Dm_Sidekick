@@ -64,6 +64,13 @@ export default function Products(props) {
       }
     )
   };
+  const totalsRow = () => {
+    return [
+      "",
+      <b>Total</b>,
+      <b>{basket.totalPrice().toString()}</b>
+    ]
+  }
 
   const basketData = () => {
     return basket.productCountPairs().map( (productAndCount) => {
@@ -85,7 +92,7 @@ export default function Products(props) {
         </Button>
       ];
       }
-    )
+    ).concat([totalsRow()])
   };
 
   useEffect(() => {
@@ -127,9 +134,13 @@ export default function Products(props) {
               tableHead={['', "Name", "Cost", '']}
               tableData={basketData()}
             />
-              <Table
-                tableData={[['', <b>Total</b>, <b>{basket.totalPrice().toString()}</b>]]}
-              />
+          </CardBody>
+        </Card>
+        <Card>
+          <CardHeader color="primary">
+            <h4 className={classes.cardTitleWhite}>Discount</h4>
+          </CardHeader>
+          <CardBody>
           </CardBody>
         </Card>
       </GridItem>
