@@ -124,7 +124,7 @@ export default function Products(props) {
           <CardBody>
             <Table
               tableHeaderColor="primary"
-              tableHead={['', "Name", "Cost"]}
+              tableHead={['', "Name", "Cost", '']}
               tableData={basketData()}
             />
               <Table
