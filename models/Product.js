@@ -1,10 +1,10 @@
+import Price from "models/Price"
+
 export default class Product {
   constructor (name, weight, gold, silver, copper) {
     this.name = name
     this.weight = weight
-    this.gold = gold
-    this.silver = silver
-    this.copper = copper
+    this.price = new Price(gold, silver, copper)
   }
 
   static fromObject(obj){
@@ -14,22 +14,8 @@ export default class Product {
     return array.map((rawProduct) => Product.fromObject(rawProduct))
   }
 
-  static price_str(gold, silver, copper){
-    let items = []
-    if (gold) {
-      items.push(`${gold.toLocaleString()} Gold`)
-    }
-    if (silver) {
-      items.push(`${silver.toLocaleString()} Silver`)
-    }
-    if (copper) {
-      items.push(`${copper.toLocaleString()} Copper`)
-    }
-    return items.join(', ')
-  }
-
   get price_str() {
-    return Product.price_str(this.gold, this.silver, 0)
+    return this.price.toString()
   }
 
   get weight_str() {
