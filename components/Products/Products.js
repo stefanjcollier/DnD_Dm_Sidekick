@@ -66,7 +66,7 @@ export default function Products(props) {
   };
 
   const basketList = () => {
-]    return basket.map( (productObj) => {
+    return basket.map( (productObj) => {
         return [
           productObj.name,
           productObj.price_str,
