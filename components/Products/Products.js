@@ -16,7 +16,7 @@ import axios from "axios";
 // Icons
 import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
 //
-import Basket from "components/Products/Basket";
+import Product from "models/Product"
 
 import styles from "assets/jss/products.js";
 const useStyles = makeStyles(styles);
@@ -39,7 +39,7 @@ export default function Products(props) {
       .get(`${host}/api/products/`)
       .then(res => {
         console.log(res.data);
-        setProducts(res.data);
+        setProducts(Product.fromObjects(res.data));
       })
       .catch(err => console.log(err));
   };
@@ -53,7 +53,7 @@ export default function Products(props) {
         return [
           productObj.name,
           productObj.price_str,
-          productObj.weight.toString(),
+          productObj.weight_str,
           <Button
             color='success'
             onClick={() => {
