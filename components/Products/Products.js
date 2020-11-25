@@ -17,6 +17,7 @@ import axios from "axios";
 import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
 //
 import Product from "models/Product"
+import Price from "models/Price"
 
 import styles from "assets/jss/products.js";
 const useStyles = makeStyles(styles);
@@ -76,6 +77,9 @@ export default function Products(props) {
       }
     )
   };
+  const basketTotalPrice = () => {
+    return basket.reduce((total, product) => total.add(product.price), new Price())
+  }
 
 
   useEffect(() => {
@@ -110,6 +114,7 @@ export default function Products(props) {
         <Card>
           <CardHeader color="primary">
             <h4 className={classes.cardTitleWhite}>Basket</h4>
+            <p>Total: {basketTotalPrice().toString()}</p>
           </CardHeader>
           <CardBody>
             <Table
