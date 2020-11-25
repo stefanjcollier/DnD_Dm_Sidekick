@@ -22,7 +22,7 @@ export default class Basket {
 
   addToBasket(product) {
     this.items[product.id] = product
-    this.counts[product.id] = this.counts[product.id] + 1
+    this.counts[product.id] = (this.counts[product.id] || 0) + 1
     return new Basket(this.items, this.counts)
   }
 
