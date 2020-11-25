@@ -18,6 +18,7 @@ import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
 //
 import Product from "models/Product"
 import Price from "models/Price"
+import Basket from "models/Basket"
 
 import styles from "assets/jss/products.js";
 const useStyles = makeStyles(styles);
@@ -25,7 +26,7 @@ const useStyles = makeStyles(styles);
 
 export default function Products(props) {
   const [products, setProducts] = useState(undefined);
-  const [basket, setBasket] = useState([]);
+  const [basket, setBasket] = useState(new Basket());
 
   const [host, setHost] = useState(() => {
     if (process.env.NODE_ENV === 'production') {
@@ -45,10 +46,6 @@ export default function Products(props) {
       .catch(err => console.log(err));
   };
 
-  const addProductToBasket = (product) => {
-    setBasket(basket.concat([product]))
-  };
-
   const productList = () => {
     return products.map( (product) => {
         return [
@@ -58,7 +55,7 @@ export default function Products(props) {
           <Button
             color='success'
             onClick={() => {
-              addProductToBasket(product)
+              setBasket(basket.addToBasket(product))
             }}
           >
             <AddShoppingCart/>
@@ -69,7 +66,8 @@ export default function Products(props) {
   };
 
   const basketList = () => {
-    return basket.map( (product) => {
+    return basket.productCountPairs().map( (productAndCount) => {
+      const [product, count] = productAndCount
       return [
         product.name,
         product.price_str,
@@ -77,10 +75,6 @@ export default function Products(props) {
       }
     )
   };
-  const basketTotalPrice = () => {
-    return basket.reduce((total, product) => total.add(product.price), new Price())
-  }
-
 
   useEffect(() => {
       refreshList();
@@ -114,7 +108,7 @@ export default function Products(props) {
         <Card>
           <CardHeader color="primary">
             <h4 className={classes.cardTitleWhite}>Basket</h4>
-            <p>Total: {basketTotalPrice().toString()}</p>
+            <p>Total: {basket.totalPrice().toString()}</p>
           </CardHeader>
           <CardBody>
             <Table
