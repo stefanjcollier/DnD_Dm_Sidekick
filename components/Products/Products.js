@@ -7,8 +7,10 @@ import Button from "components/CreativeTim/CustomButtons/Button.js";
 import Card from "components/CreativeTim/Card/Card.js";
 import CardHeader from "components/CreativeTim/Card/CardHeader.js";
 import CardBody from "components/CreativeTim/Card/CardBody.js";
-import GridContainer from "../CreativeTim/Grid/GridContainer";
-import GridItem from "../CreativeTim/Grid/GridItem";
+import GridContainer from "components/CreativeTim/Grid/GridContainer";
+import GridItem from "components/CreativeTim/Grid/GridItem";
+import PageChange from "components/CreativeTim/PageChange/PageChange";
+
 // Axios
 import axios from "axios";
 // Icons
@@ -21,7 +23,7 @@ const useStyles = makeStyles(styles);
 
 
 export default function Products(props) {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(undefined);
   const [basket, setBasket] = useState([]);
 
   const [host, setHost] = useState(() => {
@@ -90,11 +92,16 @@ export default function Products(props) {
             <h4 className={classes.cardTitleWhite}>Products</h4>
           </CardHeader>
           <CardBody>
-            <Table
-              tableHeaderColor="primary"
-              tableHead={["Name", "Base Cost", "Weight (lbs)", '']}
-              tableData={productList()}
-            />
+
+            { products === undefined ?
+                <PageChange />
+              :
+                <Table
+                  tableHeaderColor="primary"
+                  tableHead={["Name", "Base Cost", "Weight (lbs)", '']}
+                  tableData={productList()}
+                />
+            }
           </CardBody>
         </Card>
       </GridItem>
