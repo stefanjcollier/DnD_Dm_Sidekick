@@ -33,7 +33,11 @@ export default class Price {
     if (copper) {
       items.push(`${copper.toLocaleString()} Copper`)
     }
-    return items.join(', ')
+    if (items.length == 0){
+      return '0 GP'
+    } else {
+      return items.join(', ')
+    }
   }
 
   toString() {
