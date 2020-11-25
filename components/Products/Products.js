@@ -21,7 +21,7 @@ const useStyles = makeStyles(styles);
 
 
 export default function Products(props) {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(['Loading Products']);
   const [basket, setBasket] = useState([]);
 
   const [host, setHost] = useState(() => {
@@ -67,10 +67,10 @@ export default function Products(props) {
 
   const basketList = () => {
     return basket.map( (productObj) => {
-        return [
-          productObj.name,
-          productObj.price_str,
-        ];
+      return [
+        productObj.name,
+        productObj.price_str,
+      ];
       }
     )
   };
