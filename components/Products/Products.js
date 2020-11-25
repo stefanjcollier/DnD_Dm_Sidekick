@@ -69,6 +69,7 @@ export default function Products(props) {
     return basket.productCountPairs().map( (productAndCount) => {
       const [product, count] = productAndCount
       return [
+        `x${count}`,
         product.name,
         product.price_str,
       ];
@@ -113,7 +114,7 @@ export default function Products(props) {
           <CardBody>
             <Table
               tableHeaderColor="primary"
-              tableHead={["Name", "Base Cost"]}
+              tableHead={['', "Name", "Base Cost"]}
               tableData={basketList()}
             />
           </CardBody>
