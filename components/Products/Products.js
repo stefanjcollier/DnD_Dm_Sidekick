@@ -21,7 +21,7 @@ const useStyles = makeStyles(styles);
 
 
 export default function Products(props) {
-  const [products, setProducts] = useState(['Loading Products']);
+  const [products, setProducts] = useState([]);
   const [basket, setBasket] = useState([]);
 
   const [host, setHost] = useState(() => {
