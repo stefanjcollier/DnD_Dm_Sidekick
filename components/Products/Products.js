@@ -49,15 +49,15 @@ export default function Products(props) {
   };
 
   const productList = () => {
-    return products.map( (productObj) => {
+    return products.map( (product) => {
         return [
-          productObj.name,
-          productObj.price_str,
-          productObj.weight_str,
+          product.name,
+          product.price_str,
+          product.weight_str,
           <Button
             color='success'
             onClick={() => {
-              addProductToBasket(productObj)
+              addProductToBasket(product)
             }}
           >
             <AddShoppingCart/>
@@ -68,10 +68,10 @@ export default function Products(props) {
   };
 
   const basketList = () => {
-    return basket.map( (productObj) => {
+    return basket.map( (product) => {
       return [
-        productObj.name,
-        productObj.price_str,
+        product.name,
+        product.price_str,
       ];
       }
     )
