@@ -7,7 +7,7 @@ export default class Price {
   }
 
   add(otherPrice){
-    new Price(
+    return new Price(
       this.gold + otherPrice.gold,
       this.silver + otherPrice.silver,
       this.copper + otherPrice.copper,
