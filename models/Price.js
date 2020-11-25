@@ -1,9 +1,9 @@
 export default class Price {
 
   constructor(gold, silver, copper) {
-    this.gold = gold || 0
-    this.silver = silver || 0
-    this.copper = copper || 0
+    this.gold = Math.round(gold) || 0
+    this.silver = Math.round(silver) || 0
+    this.copper = Math.round(copper) || 0
   }
 
   add(otherPrice){
