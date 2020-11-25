@@ -65,7 +65,7 @@ export default function Products(props) {
     )
   };
 
-  const basketList = () => {
+  const basketData = () => {
     return basket.productCountPairs().map( (productAndCount) => {
       const [product, count] = productAndCount
       return [
@@ -97,7 +97,7 @@ export default function Products(props) {
               :
                 <Table
                   tableHeaderColor="primary"
-                  tableHead={["Name", "Base Cost", "Weight (lbs)", '']}
+                  tableHead={["Name", "Cost", "Weight (lbs)", '']}
                   tableData={productList()}
                 />
             }
@@ -109,13 +109,13 @@ export default function Products(props) {
         <Card>
           <CardHeader color="primary">
             <h4 className={classes.cardTitleWhite}>Basket</h4>
-            <p>Total: {basket.totalPrice().toString()}</p>
+            <p className={classes.cardCategoryWhite}>Total: {basket.totalPrice().toString()}</p>
           </CardHeader>
           <CardBody>
             <Table
               tableHeaderColor="primary"
-              tableHead={['', "Name", "Base Cost"]}
-              tableData={basketList()}
+              tableHead={['', "Name", "Cost"]}
+              tableData={basketData()}
             />
           </CardBody>
         </Card>
