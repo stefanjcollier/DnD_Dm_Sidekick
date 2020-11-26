@@ -17,25 +17,20 @@ import axios from "axios";
 import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
 //
 import Product from "models/Product"
-import Price from "models/Price"
 import Basket from "models/Basket"
 import DiscountService from "services/DiscountService"
+import HostService from "services/HostService"
 
 import styles from "assets/jss/products.js";
 const useStyles = makeStyles(styles);
 
+const hostFromEnv = new HostService().getHost()
 
 export default function Products(props) {
   const [products, setProducts] = useState(undefined);
   const [basket, setBasket] = useState(new Basket());
 
-  const [host, setHost] = useState(() => {
-    if (process.env.NODE_ENV === 'production') {
-      return 'https://dm-sidekick-api.herokuapp.com'
-    } else {
-      return 'http://localhost:8000'
-    }
-  });
+  const [host, setHost] = useState(hostFromEnv);
 
   const refreshList = () => {
     axios
