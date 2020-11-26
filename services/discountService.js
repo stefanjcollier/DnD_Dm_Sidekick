@@ -11,8 +11,14 @@ export default class DiscountService {
     "2": 0.95,
     "3": 0.93,
     "4": 0.90,
-    "5": 0.88,
+    "5": 0.85,
   }
+
+  REPUTATIONS = [
+    "Villain", "Enemy", "Hated", "Reviled", "Disliked",
+    "Stranger",
+    "Known", "Liked", "Renowned", "Honored", "Legendary"
+  ]
 
   REPUTATION_TO_KEY = {
     Villain:   "-5",
