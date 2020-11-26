@@ -19,6 +19,7 @@ import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
 import Product from "models/Product"
 import Price from "models/Price"
 import Basket from "models/Basket"
+import DiscountService from "services/DiscountService"
 
 import styles from "assets/jss/products.js";
 const useStyles = makeStyles(styles);
@@ -64,11 +65,26 @@ export default function Products(props) {
       }
     )
   };
-  const totalsRow = () => {
+
+  const charisma = () => { return  5 }
+  const reputation = () => { return  'Liked' }
+  const determineDiscount = () => {
+    return new DiscountService().modifier(charisma(), reputation())
+  }
+  const totalsRows = () => {
+    const totalPrice = basket.totalPrice()
+    const discountedPrice = totalPrice.times(determineDiscount())
     return [
-      "",
-      <b>Total</b>,
-      <b>{basket.totalPrice().toString()}</b>
+      [
+        "",
+        <b>Total</b>,
+        <b>{totalPrice.toString()}</b>
+      ],
+      [
+        "",
+        <b>Discounted Total</b>,
+        <b>{discountedPrice.toString()}</b>
+      ],
     ]
   }
 
@@ -92,7 +108,7 @@ export default function Products(props) {
         </Button>
       ];
       }
-    ).concat([totalsRow()])
+    ).concat(totalsRows())
   };
 
   useEffect(() => {
@@ -137,10 +153,18 @@ export default function Products(props) {
           </CardBody>
         </Card>
         <Card>
-          <CardHeader color="primary">
+          <CardHeader color="info">
             <h4 className={classes.cardTitleWhite}>Discount</h4>
           </CardHeader>
           <CardBody>
+            <Table
+              tableHeaderColor="info"
+              tableData={[
+                [<b>Reputation</b>, reputation()],
+                [<b>Charisma</b>,   charisma()],
+                [<b>Discount</b>,  determineDiscount()]
+              ]}
+            />
           </CardBody>
         </Card>
       </GridItem>
