@@ -24,13 +24,12 @@ import HostService from "services/HostService"
 import styles from "assets/jss/products.js";
 const useStyles = makeStyles(styles);
 
-const hostFromEnv = new HostService().getHost()
+const host = new HostService().getHost()
 
 export default function Products(props) {
   const [products, setProducts] = useState(undefined);
   const [basket, setBasket] = useState(new Basket());
-
-  const [host, setHost] = useState(hostFromEnv);
+  const [priceModifier, setPriceModifier] = useState(1);
 
   const refreshList = () => {
     axios
@@ -62,13 +61,17 @@ export default function Products(props) {
   };
 
   const charisma = () => { return  5 }
-  const reputation = () => { return  'Liked' }
-  const determineDiscount = () => {
-    return new DiscountService().modifier(charisma(), reputation())
+  const reputation = () => { return  6 }
+  const fetchPriceModifier = () => {
+    const service = new DiscountService()
+    service.modifier(charisma(), reputation(), (newPriceModifier) =>{
+      setPriceModifier(newPriceModifier)
+    })
   }
+
   const totalsRows = () => {
     const totalPrice = basket.totalPrice()
-    const discountedPrice = totalPrice.times(determineDiscount())
+    const discountedPrice = totalPrice.times(priceModifier)
     return [
       [
         "",
@@ -108,6 +111,7 @@ export default function Products(props) {
 
   useEffect(() => {
       refreshList();
+      fetchPriceModifier()
     }, []
   );
 
@@ -157,7 +161,7 @@ export default function Products(props) {
               tableData={[
                 [<b>Reputation</b>, reputation()],
                 [<b>Charisma</b>,   charisma()],
-                [<b>Discount</b>,  determineDiscount()]
+                [<b>Discount</b>,  priceModifier]
               ]}
             />
           </CardBody>
