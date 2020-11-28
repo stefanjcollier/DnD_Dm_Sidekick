@@ -18,17 +18,21 @@ export default class ApiModel extends Abstract{
     return array.map((rawObject) => this.fromObject(rawObject))
   }
 
-  static fetch(id, success){
-    this._get(`${this.endpoint()}/${id}`, (rawObj) => success(this.fromObject(rawObj)))
-  }
-
-  static fetchAll(success){
-    this._get(this.endpoint(), (rawObjArray) =>
-      success(this.fromObjects(rawObjArray))
+  static fetch(id, success, error){
+    this._get(`${this.endpoint()}/${id}/`,
+      (rawObj) => success(this.fromObject(rawObj)),
+      error
     )
   }
 
-  static _get(endpoint, success){
+  static fetchAll(success, error){
+    this._get(this.endpoint(),
+      (rawObjArray) => success(this.fromObjects(rawObjArray)),
+      error
+    )
+  }
+
+  static _get(endpoint, success, error){
     const url = `${host}/${endpoint}`
     axios.get(url).then(res => {
       this._debug(`✅ GET ${url}\nResponse Body:\n`, res.data)
@@ -36,6 +40,14 @@ export default class ApiModel extends Abstract{
     }).catch(err => {
       this._debug(`⛔️ GET ${url}\n`, err)
       console.log(err)
+      if (error !== undefined) {
+        error(err)
+      } else if (DEBUG) {
+        const lastUrlChar = endpoint.replace(/[/]/g, '').substr(-1)
+        const lastCharIsNum = !isNaN(lastUrlChar)
+        console.log(lastUrlChar, lastCharIsNum)
+        alert(`Couldn't fetch ${this.name}${lastCharIsNum ? '' : 's'}`)
+      }
     });
   }
 
