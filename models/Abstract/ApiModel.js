@@ -15,7 +15,7 @@ export default class ApiModel extends Abstract{
   }
 
   static fromObjects(array){
-    return array.map((rawObject) => this.prototype.fromObject(rawObject))
+    return array.map((rawObject) => this.fromObject(rawObject))
   }
 
   static fetch(id, success){
@@ -23,9 +23,11 @@ export default class ApiModel extends Abstract{
   }
 
   static fetchAll(success){
-    this._get(this.endpoint(), (rawObjArray) => success(this.fromObjects(rawObjArray)))
+    this._get(this.endpoint(), (rawObjArray) =>
+      success(this.fromObjects(rawObjArray))
+    )
   }
-  
+
   static _get(endpoint, success){
     const url = `${host}/${endpoint}`
     axios.get(url).then(res => {
