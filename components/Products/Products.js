@@ -34,16 +34,6 @@ export default function Products(props) {
   const [priceModifier, setPriceModifier] = useState(1);
   const [character, setCharacter] = useState(undefined)
 
-  const refreshList = () => {
-    axios
-      .get(`${host}/api/products/`)
-      .then(res => {
-        console.log(res.data);
-        setProducts(Product.fromObjects(res.data));
-      })
-      .catch(err => console.log(err));
-  };
-
   const productList = () => {
     return products.map( (product) => {
         return [
@@ -124,7 +114,7 @@ export default function Products(props) {
   };
 
   useEffect(() => {
-      refreshList();
+      Product.fetchAll((products) => setProducts(products))
       fetchPriceModifier()
       Character.fetch(1, (character) => setCharacter(character))
     }, []
