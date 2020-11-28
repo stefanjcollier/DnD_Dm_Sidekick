@@ -18,6 +18,8 @@ import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
 //
 import Product from "models/Product"
 import Basket from "models/Basket"
+import Character from "models/Character";
+
 import DiscountService from "services/DiscountService"
 import HostService from "services/HostService"
 
@@ -30,6 +32,7 @@ export default function Products(props) {
   const [products, setProducts] = useState(undefined);
   const [basket, setBasket] = useState(new Basket());
   const [priceModifier, setPriceModifier] = useState(1);
+  const [character, setCharacter] = useState(undefined)
 
   const refreshList = () => {
     axios
@@ -60,9 +63,20 @@ export default function Products(props) {
     )
   };
 
-  const charisma = () => { return  5 }
-  const reputation = () => { return  6 }
+  const charisma = () => {
+    if (character === undefined)
+      return
+    return character.charisma_modifier
+  }
+  const reputation = () => {
+    if (character === undefined)
+      return
+    return  character.reputation.id
+  }
   const fetchPriceModifier = () => {
+    if (character === undefined)
+      return
+
     const service = new DiscountService()
     service.modifier(charisma(), reputation(), (newPriceModifier) =>{
       setPriceModifier(newPriceModifier)
@@ -112,6 +126,7 @@ export default function Products(props) {
   useEffect(() => {
       refreshList();
       fetchPriceModifier()
+      Character.fetch(1, (character) => setCharacter(character))
     }, []
   );
 
