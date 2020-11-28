@@ -63,10 +63,7 @@ export default function Products(props) {
       return
     return  character.reputation.name
   }
-  const fetchPriceModifier = () => {
-    if (character === undefined)
-      return
-
+  const fetchPriceModifier = (character) => {
     const service = new DiscountService()
     service.modifier(character.charisma_modifier, character.reputation.id, (newPriceModifier) =>{
       setPriceModifier(newPriceModifier)
@@ -115,8 +112,11 @@ export default function Products(props) {
 
   useEffect(() => {
       Product.fetchAll((products) => setProducts(products))
-      fetchPriceModifier()
-      Character.fetch(1, (character) => setCharacter(character))
+
+      Character.fetch(1, (character) => {
+        setCharacter(character)
+        fetchPriceModifier(character)
+      })
     }, []
   );
 
