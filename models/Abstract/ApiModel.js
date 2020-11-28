@@ -28,17 +28,18 @@ export default class ApiModel extends Abstract{
   
   static _get(endpoint, success){
     const url = `${host}/${endpoint}`
-    this._debug(`GET ${url}`)
-    axios
-      .get(url).then(res => {
-      this._debug(res.data);
-      success(res.data);
-    }).catch(err => console.log(err));
+    axios.get(url).then(res => {
+      this._debug(`✅ GET ${url}\nResponse Body:\n`, res.data)
+        success(res.data);
+    }).catch(err => {
+      this._debug(`⛔️ GET ${url}\n`, err)
+      console.log(err)
+    });
   }
 
-  static _debug(message){
+  static _debug(...messages){
     if (DEBUG) {
-      console.log(message)
+      console.log(...messages)
     }
   }
 }
