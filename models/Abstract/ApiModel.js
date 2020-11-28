@@ -4,6 +4,7 @@ import HostService from "services/HostService";
 
 const host = new HostService().getHost()
 
+const DEBUG = true
 
 export default class ApiModel extends Abstract{
   constructor(id) {
@@ -18,18 +19,26 @@ export default class ApiModel extends Abstract{
   }
 
   static fetch(id, success){
-    this._get((rawObj) => success(this.fromObject(rawObj)))
+    this._get(`${this.endpoint()}/${id}`, (rawObj) => success(this.fromObject(rawObj)))
   }
 
   static fetchAll(success){
-    this._get((array) => success(this.fromObjects(array)))
+    this._get(this.endpoint(), (rawObjArray) => success(this.fromObjects(rawObjArray)))
   }
   
   static _get(endpoint, success){
+    const url = `${host}/${endpoint}`
+    this._debug(`GET ${url}`)
     axios
-      .get(`${host}/${endpoint}`).then(res => {
-      console.log(res.data);
+      .get(url).then(res => {
+      this._debug(res.data);
       success(res.data);
     }).catch(err => console.log(err));
+  }
+
+  static _debug(message){
+    if (DEBUG) {
+      console.log(message)
+    }
   }
 }
