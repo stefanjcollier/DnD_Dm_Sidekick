@@ -61,14 +61,14 @@ export default function Products(props) {
   const reputation = () => {
     if (character === undefined)
       return
-    return  character.reputation.id
+    return  character.reputation.name
   }
   const fetchPriceModifier = () => {
     if (character === undefined)
       return
 
     const service = new DiscountService()
-    service.modifier(charisma(), reputation(), (newPriceModifier) =>{
+    service.modifier(character.charisma_modifier, character.reputation.id, (newPriceModifier) =>{
       setPriceModifier(newPriceModifier)
     })
   }
