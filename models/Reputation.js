@@ -8,5 +8,8 @@ export default class Reputation {
   static fromObject(obj){
     return new Reputation(obj.id, obj.name, obj.description)
   }
+  static fromObjects(array){
+    return array.map((rawReputation) => Reputation.fromObject(rawReputation))
+  }
 
 }
