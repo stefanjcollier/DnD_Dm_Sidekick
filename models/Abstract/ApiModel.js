@@ -44,9 +44,8 @@ export default class ApiModel extends Abstract{
       if (error !== undefined) {
         error(err)
       } else if (DEBUG) {
-        const lastUrlChar = endpoint.replace(/[/]/g, '').substr(-1)
+        const lastUrlChar = endpoint.substr(-2, 1)
         const lastCharIsNum = !isNaN(lastUrlChar)
-        console.log(lastUrlChar, lastCharIsNum)
         alert(`Couldn't fetch ${this.name}${lastCharIsNum ? '' : 's'}`)
       }
     });

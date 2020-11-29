@@ -18,6 +18,13 @@ export default class Character extends ApiModel {
     const reputation = Reputation.fromObject(obj.reputation)
     return new Character(obj.id, obj.name, obj.charisma_modifier, reputation, obj.remote_image_url)
   }
+
+  charismaModifierStr() {
+    if (this.charisma_modifier > 0){
+      return `+${this.charisma_modifier}`
+    } else {
+      return this.charisma_modifier
+    }
   }
 
 }
