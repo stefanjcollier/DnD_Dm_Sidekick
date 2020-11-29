@@ -16,7 +16,8 @@ export default class Character extends ApiModel {
 
   static fromObject(obj) {
     const reputation = Reputation.fromObject(obj.reputation)
-    return new Character(obj.id, obj.name, obj.charisma_modifier, reputation, obj.remoteImageUrl)
+    return new Character(obj.id, obj.name, obj.charisma_modifier, reputation, obj.remote_image_url)
+  }
   }
 
 }
