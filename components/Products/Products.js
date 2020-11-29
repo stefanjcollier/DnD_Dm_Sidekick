@@ -117,6 +117,13 @@ export default function Products(props) {
         setCharacter(character)
         fetchPriceModifier(character)
       })
+
+      // Character.fetchPromise(1)
+      //   .then((character) => {
+      //     setCharacter(character)
+      //     fetchPriceModifier(character)
+      //   })
+
     }, []
   );
 
