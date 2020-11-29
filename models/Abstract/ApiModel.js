@@ -33,7 +33,8 @@ export default class ApiModel extends Abstract{
   }
 
   static _get(endpoint, success, error){
-    const url = `${host}/${endpoint}`
+    const trailing_slash = (endpoint.substr(-1) !== '/') ? '/' : ''
+    const url = `${host}/${endpoint}${trailing_slash}`
     axios.get(url).then(res => {
       this._debug(`✅ GET ${url}\nResponse Body:\n`, res.data)
         success(res.data);
