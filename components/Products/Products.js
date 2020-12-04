@@ -212,7 +212,7 @@ export default function Products(props) {
         </Card>
         <Card>
           <CardHeader color="info">
-            <h4 className={classes.cardTitleWhite}>Discount</h4>
+            <h4 className={classes.cardTitleWhite}>Discount for {character.name}</h4>
           </CardHeader>
           <CardBody>
             <Table
