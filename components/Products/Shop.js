@@ -10,11 +10,7 @@ import Button from "components/CreativeTim/CustomButtons/Button.js";
 import Card from "components/CreativeTim/Card/Card.js";
 import CardHeader from "components/CreativeTim/Card/CardHeader.js";
 import CardBody from "components/CreativeTim/Card/CardBody.js";
-import CardIcon from "components/CreativeTim/Card/CardIcon.js";
-import CardFooter from "components/CreativeTim/Card/CardFooter.js";
 import CardAvatar from "components/CreativeTim/Card/CardAvatar.js";
-import Danger from "components/CreativeTim/Typography/Danger.js";
-import Warning from "components/CreativeTim/Typography/Warning.js";
 import GridContainer from "components/CreativeTim/Grid/GridContainer";
 import GridItem from "components/CreativeTim/Grid/GridItem";
 import PageChange from "components/CreativeTim/PageChange/PageChange";
@@ -29,8 +25,6 @@ import Character from "models/Character";
 import DiscountService from "services/DiscountService"
 
 import styles from "assets/jss/products.js";
-import {Avatar} from "@material-ui/core";
-import Image from "next/image";
 import DiscountBreakdownCard from "components/Products/DiscountBreakdownCard";
 const useStyles = makeStyles(styles);
 
