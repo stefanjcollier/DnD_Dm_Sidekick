@@ -20,17 +20,6 @@ import GridItem from "components/CreativeTim/Grid/GridItem";
 import PageChange from "components/CreativeTim/PageChange/PageChange";
 
 
-import Store from "@material-ui/icons/Store";
-import DateRange from "@material-ui/icons/DateRange";
-import LocalOffer from "@material-ui/icons/LocalOffer";
-import Update from "@material-ui/icons/Update";
-import ArrowUpward from "@material-ui/icons/ArrowUpward";
-import AccessTime from "@material-ui/icons/AccessTime";
-import Accessibility from "@material-ui/icons/Accessibility";
-import BugReport from "@material-ui/icons/BugReport";
-import Code from "@material-ui/icons/Code";
-import Cloud from "@material-ui/icons/Cloud";
-
 // Models
 import Product from "models/Product"
 import Basket from "models/Basket"
