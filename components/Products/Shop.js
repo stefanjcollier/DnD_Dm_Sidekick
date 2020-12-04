@@ -31,6 +31,7 @@ import DiscountService from "services/DiscountService"
 import styles from "assets/jss/products.js";
 import {Avatar} from "@material-ui/core";
 import Image from "next/image";
+import DiscountBreakdownCard from "components/Products/DiscountBreakdownCard";
 const useStyles = makeStyles(styles);
 
 
@@ -207,24 +208,11 @@ export default function Shop(props) {
             />
           </CardBody>
         </Card>
-        {
-          !character ? null :
-          <Card>
-            <CardHeader color="info">
-              <h4 className={classes.cardTitleWhite}>Discount {character ? `for ${character.name}` : ''}</h4>
-            </CardHeader>
-            <CardBody>
-              <Table
-                tableHeaderColor="info"
-                tableData={[
-                  [<b>Reputation</b>, reputation()],
-                  [<b>Charisma</b>,   charisma()],
-                  [<b>Discount</b>,  renderDiscount()]
-                ]}
-              />
-            </CardBody>
-          </Card>
-        }
+
+        <DiscountBreakdownCard
+          character={character}
+          discount={priceModifier}
+        />
 
       </GridItem>
     </GridContainer>
