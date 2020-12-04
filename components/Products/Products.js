@@ -1,38 +1,56 @@
 import React, { useState, useEffect } from 'react';
 // @material-ui/core components
-import {makeStyles, withStyles} from "@material-ui/core/styles";
+import {makeStyles} from "@material-ui/core/styles";
+import Icon from "@material-ui/core/Icon";
+import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
+
 // core CreativeTim components
 import Table from "components/CreativeTim/Table/Table.js";
 import Button from "components/CreativeTim/CustomButtons/Button.js";
 import Card from "components/CreativeTim/Card/Card.js";
 import CardHeader from "components/CreativeTim/Card/CardHeader.js";
 import CardBody from "components/CreativeTim/Card/CardBody.js";
+import CardIcon from "components/CreativeTim/Card/CardIcon.js";
+import CardFooter from "components/CreativeTim/Card/CardFooter.js";
+import CardAvatar from "components/CreativeTim/Card/CardAvatar.js";
+import Danger from "components/CreativeTim/Typography/Danger.js";
+import Warning from "components/CreativeTim/Typography/Warning.js";
 import GridContainer from "components/CreativeTim/Grid/GridContainer";
 import GridItem from "components/CreativeTim/Grid/GridItem";
 import PageChange from "components/CreativeTim/PageChange/PageChange";
 
-// Axios
-import axios from "axios";
-// Icons
-import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
-//
+
+import Store from "@material-ui/icons/Store";
+import DateRange from "@material-ui/icons/DateRange";
+import LocalOffer from "@material-ui/icons/LocalOffer";
+import Update from "@material-ui/icons/Update";
+import ArrowUpward from "@material-ui/icons/ArrowUpward";
+import AccessTime from "@material-ui/icons/AccessTime";
+import Accessibility from "@material-ui/icons/Accessibility";
+import BugReport from "@material-ui/icons/BugReport";
+import Code from "@material-ui/icons/Code";
+import Cloud from "@material-ui/icons/Cloud";
+
+// Models
 import Product from "models/Product"
 import Basket from "models/Basket"
 import Character from "models/Character";
 
+// Services
 import DiscountService from "services/DiscountService"
-import HostService from "services/HostService"
 
 import styles from "assets/jss/products.js";
+import {Avatar} from "@material-ui/core";
+import Image from "next/image";
 const useStyles = makeStyles(styles);
 
-const host = new HostService().getHost()
 
 export default function Products(props) {
   const [products, setProducts] = useState(undefined);
   const [basket, setBasket] = useState(new Basket());
   const [priceModifier, setPriceModifier] = useState(1);
   const [character, setCharacter] = useState(undefined)
+  const [characters, setCharacters] = useState([])
 
   const productList = () => {
     return products.map( (product) => {
@@ -117,6 +135,7 @@ export default function Products(props) {
         setCharacter(character)
         fetchPriceModifier(character)
       })
+      Character.fetchAll((characters) => setCharacters(characters))
 
       // Character.fetchPromise(1)
       //   .then((character) => {
@@ -126,10 +145,35 @@ export default function Products(props) {
 
     }, []
   );
-
   const classes = useStyles();
+
+  const renderCharacters = () => {
+    return (characters.map( (character) => {
+      return (
+        <GridItem key={`Character-${character.id}`} xs={12} sm={5} md={3}>
+          <Card>
+            <CardHeader stats icon>
+              <CardAvatar profile>
+                <img alt={character.name} src={character.imageUrl}/>
+              </CardAvatar>
+            </CardHeader>
+            <CardBody>
+              <h3 className={classes.cardTitle}>{character.name}</h3>
+              <div className={classes.stats}>
+                Reputation: {character.reputation.name}
+                <br/>
+                Charisma: {character.charismaModifierStr()}
+              </div>
+            </CardBody>
+          </Card>
+        </GridItem>
+      )}
+    ))
+  }
+
   return (
     <GridContainer>
+      {renderCharacters()}
       <GridItem xs={8} sm={8} md={8}>
         <Card>
           <CardHeader color="primary">
