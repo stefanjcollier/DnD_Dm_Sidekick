@@ -24,8 +24,12 @@ import Character from "models/Character";
 // Services
 import DiscountService from "services/DiscountService"
 
-import styles from "assets/jss/products.js";
+// Components
 import DiscountBreakdownCard from "components/Products/DiscountBreakdownCard";
+import BasketCard from "components/Products/BasketCard";
+
+
+import styles from "assets/jss/products.js";
 const useStyles = makeStyles(styles);
 
 
@@ -72,47 +76,6 @@ export default function Shop(props) {
       fetchPriceModifier(chosenCharacter)
     }
   }
-
-  const totalsRows = () => {
-    const totalPrice = basket.totalPrice()
-    const discountedPrice = totalPrice.times(priceModifier)
-    return [
-      [
-        "",
-        <b>Total</b>,
-        <b>{totalPrice.toString()}</b>
-      ],
-      [
-        "",
-        <b>Discounted Total</b>,
-        <b>{discountedPrice.toString()}</b>
-      ],
-    ]
-  }
-
-  const basketData = () => {
-    return basket.productCountPairs().map( (productAndCount) => {
-      const [product, count] = productAndCount
-      return [
-        `x${count}`,
-        product.name,
-        product.price_str,
-        <Button
-          justIcon
-          round
-          size="xs"
-          color='danger'
-          onClick={() => {
-            setBasket(basket.removeFromBasket(product))
-          }}
-        >
-          -
-        </Button>
-      ];
-      }
-    ).concat(totalsRows())
-  };
-
 
   useEffect(() => {
       Product.fetchAll((products) => setProducts(products))
@@ -177,24 +140,15 @@ export default function Shop(props) {
       </GridItem>
 
       <GridItem xs={4} sm={4} md={4}>
-        <Card>
-          <CardHeader color="primary">
-            <h4 className={classes.cardTitleWhite}>Basket</h4>
-          </CardHeader>
-          <CardBody>
-            <Table
-              tableHeaderColor="primary"
-              tableHead={['', "Name", "Cost", '']}
-              tableData={basketData()}
-            />
-          </CardBody>
-        </Card>
-
-        <DiscountBreakdownCard
-          character={character}
+        <BasketCard
           discount={priceModifier}
+          basket={basket}
+          setBasket={setBasket}
         />
-
+        <DiscountBreakdownCard
+          discount={priceModifier}
+          character={character}
+        />
       </GridItem>
     </GridContainer>
   )
