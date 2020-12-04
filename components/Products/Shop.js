@@ -61,19 +61,6 @@ export default function Shop(props) {
     )
   };
 
-  const charisma = () => {
-    if (character === undefined)
-      return
-    return character.charisma_modifier
-  }
-  const reputation = () => {
-    if (character === undefined)
-      return
-    return  character.reputation.name
-  }
-  const renderDiscount = () => {
-    return `${priceModifier.toFixed(2)*100} %`;
-  }
 
   const fetchPriceModifier = (character) => {
     const service = new DiscountService()
