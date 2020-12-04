@@ -81,6 +81,10 @@ export default function Products(props) {
       return
     return  character.reputation.name
   }
+  const renderDiscount = () => {
+    return `${priceModifier.toFixed(2)*100} %`;
+  }
+
   const fetchPriceModifier = (character) => {
     const service = new DiscountService()
     service.modifier(character.charisma_modifier, character.reputation.id, (newPriceModifier) =>{
@@ -91,6 +95,7 @@ export default function Products(props) {
   const changeCharacter = (chosenCharacter) => {
     if (character && chosenCharacter.id  === character.id) {
       setCharacter(null)
+      setPriceModifier(1)
     } else {
       setCharacter(chosenCharacter)
       fetchPriceModifier(chosenCharacter)
@@ -225,7 +230,7 @@ export default function Products(props) {
                 tableData={[
                   [<b>Reputation</b>, reputation()],
                   [<b>Charisma</b>,   charisma()],
-                  [<b>Discount</b>,  priceModifier]
+                  [<b>Discount</b>,  renderDiscount()]
                 ]}
               />
             </CardBody>
