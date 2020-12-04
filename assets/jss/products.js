@@ -86,6 +86,9 @@ const productsStyle = (theme) => ({
     width: "16px",
     height: "16px",
   },
+  clickable: {
+    cursor: "pointer"
+  }
 
 });
 

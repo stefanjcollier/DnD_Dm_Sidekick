@@ -88,6 +88,11 @@ export default function Products(props) {
     })
   }
 
+  const changeCharacter = (character) => {
+    setCharacter(character)
+    fetchPriceModifier(character)
+  }
+
   const totalsRows = () => {
     const totalPrice = basket.totalPrice()
     const discountedPrice = totalPrice.times(priceModifier)
@@ -128,14 +133,12 @@ export default function Products(props) {
     ).concat(totalsRows())
   };
 
+
   useEffect(() => {
       Product.fetchAll((products) => setProducts(products))
 
-      Character.fetch(1, (character) => {
-        setCharacter(character)
-        fetchPriceModifier(character)
-      })
-      Character.fetchAll((characters) => setCharacters(characters))
+      Character.fetch(1, changeCharacter)
+      Character.fetchAll(setCharacters)
 
       // Character.fetchPromise(1)
       //   .then((character) => {
@@ -153,7 +156,7 @@ export default function Products(props) {
         <GridItem key={`Character-${character.id}`} xs={12} sm={5} md={3}>
           <Card>
             <CardHeader stats icon>
-              <CardAvatar profile>
+              <CardAvatar profile className={classes.clickable} onClick={() => changeCharacter(character)}>
                 <img alt={character.name} src={character.imageUrl}/>
               </CardAvatar>
             </CardHeader>
