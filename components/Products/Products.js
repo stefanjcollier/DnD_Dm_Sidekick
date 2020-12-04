@@ -88,9 +88,13 @@ export default function Products(props) {
     })
   }
 
-  const changeCharacter = (character) => {
-    setCharacter(character)
-    fetchPriceModifier(character)
+  const changeCharacter = (chosenCharacter) => {
+    if (character && chosenCharacter.id  === character.id) {
+      setCharacter(null)
+    } else {
+      setCharacter(chosenCharacter)
+      fetchPriceModifier(chosenCharacter)
+    }
   }
 
   const totalsRows = () => {
@@ -137,10 +141,7 @@ export default function Products(props) {
   useEffect(() => {
       Product.fetchAll((products) => setProducts(products))
 
-      Character.fetchAll((characters) => {
-        setCharacters(characters)
-        setCharacter(characters[0])
-      })
+      Character.fetchAll(setCharacters)
 
       // Character.fetchPromise(1)
       //   .then((character) => {
