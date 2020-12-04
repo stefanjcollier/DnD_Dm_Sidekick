@@ -137,8 +137,10 @@ export default function Products(props) {
   useEffect(() => {
       Product.fetchAll((products) => setProducts(products))
 
-      Character.fetch(1, changeCharacter)
-      Character.fetchAll(setCharacters)
+      Character.fetchAll((characters) => {
+        setCharacters(characters)
+        setCharacter(characters[0])
+      })
 
       // Character.fetchPromise(1)
       //   .then((character) => {
@@ -210,21 +212,25 @@ export default function Products(props) {
             />
           </CardBody>
         </Card>
-        <Card>
-          <CardHeader color="info">
-            <h4 className={classes.cardTitleWhite}>Discount for {character.name}</h4>
-          </CardHeader>
-          <CardBody>
-            <Table
-              tableHeaderColor="info"
-              tableData={[
-                [<b>Reputation</b>, reputation()],
-                [<b>Charisma</b>,   charisma()],
-                [<b>Discount</b>,  priceModifier]
-              ]}
-            />
-          </CardBody>
-        </Card>
+        {
+          !character ? null :
+          <Card>
+            <CardHeader color="info">
+              <h4 className={classes.cardTitleWhite}>Discount {character ? `for ${character.name}` : ''}</h4>
+            </CardHeader>
+            <CardBody>
+              <Table
+                tableHeaderColor="info"
+                tableData={[
+                  [<b>Reputation</b>, reputation()],
+                  [<b>Charisma</b>,   charisma()],
+                  [<b>Discount</b>,  priceModifier]
+                ]}
+              />
+            </CardBody>
+          </Card>
+        }
+
       </GridItem>
     </GridContainer>
   )
