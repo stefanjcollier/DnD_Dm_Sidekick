@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // @material-ui/core components
 import {makeStyles} from "@material-ui/core/styles";
-import Icon from "@material-ui/core/Icon";
 import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
 
 // core CreativeTim components
