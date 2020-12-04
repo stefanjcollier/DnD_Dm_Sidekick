@@ -34,7 +34,7 @@ import Image from "next/image";
 const useStyles = makeStyles(styles);
 
 
-export default function Products(props) {
+export default function Shop(props) {
   const [products, setProducts] = useState(undefined);
   const [basket, setBasket] = useState(new Basket());
   const [priceModifier, setPriceModifier] = useState(1);
