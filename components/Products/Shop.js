@@ -74,6 +74,7 @@ export default function Shop(props) {
       <GridItem xs={4} sm={4} md={4}>
         <BasketCard
           discount={priceModifier}
+          activeCharacter={character}
           basket={basket}
           setBasket={setBasket}
         />

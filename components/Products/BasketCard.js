@@ -9,6 +9,7 @@ import Table from "components/CreativeTim/Table/Table";
 import Button from "components/CreativeTim/CustomButtons/Button";
 
 import Basket from "models/Basket";
+import Character from "models/Character";
 
 
 import styles from "assets/jss/products.js";
@@ -17,19 +18,24 @@ const useStyles = makeStyles(styles);
 export default function BasketCard(props) {
   const totalsRows = () => {
     const totalPrice = props.basket.totalPrice()
-    const discountedPrice = totalPrice.times(props.discount)
-    return [
+    const finalRows = [
       [
         "",
         <b>Total</b>,
         <b>{totalPrice.toString()}</b>
       ],
-      [
-        "",
-        <b>Discounted Total</b>,
-        <b>{discountedPrice.toString()}</b>
-      ],
     ]
+    if (props.activeCharacter) {
+      const discountedPrice = totalPrice.times(props.discount)
+      finalRows.push(
+        [
+           "",
+          <b>Discounted Total</b>,
+          <b>{discountedPrice.toString()}</b>
+        ]
+      )
+    }
+    return finalRows
   }
 
   const basketData = () => {
@@ -84,5 +90,6 @@ export default function BasketCard(props) {
 BasketCard.propTypes = {
   basket: PropTypes.instanceOf(Basket).isRequired,
   discount: PropTypes.number.isRequired,
-  setBasket: PropTypes.func.isRequired
+  setBasket: PropTypes.func.isRequired,
+  activeCharacter: PropTypes.instanceOf(Character),
 };
