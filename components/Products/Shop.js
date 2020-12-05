@@ -45,8 +45,7 @@ export default function Shop(props) {
   }
 
   useEffect(() => {
-      Product.fetchAll((products) => setProducts(products))
-
+      Product.fetchAll(setProducts)
       Character.fetchAll(setCharacters)
 
       // Character.fetchPromise(1)
