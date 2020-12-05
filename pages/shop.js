@@ -9,7 +9,6 @@ import CardHeader from "components/CreativeTim/Card/CardHeader.js";
 import CardBody from "components/CreativeTim/Card/CardBody.js";
 // components
 import Shop from "components/Products/Shop";
-import Basket from "components/Products/Basket";
 
 import styles from "assets/jss/products.js";
 const useStyles = makeStyles(styles);
