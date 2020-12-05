@@ -35,6 +35,6 @@ export default function CharacterCard(props) {
 }
 
 CharacterCard.propTypes = {
-  character: PropTypes.instanceOf(Character).isRequired,
+  character: PropTypes.instanceOf(Character),
   setActiveCharacter: PropTypes.func.isRequired,
 }

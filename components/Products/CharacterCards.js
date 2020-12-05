@@ -18,12 +18,15 @@ export default function CharacterCards(props) {
       </GridItem>
     )
   }
+  if (props.characters === undefined) {
+    return null
+  }
   return (
     props.characters.map((character) => { return renderCharacterCard(character)})
   )
 }
 
 CharacterCards.propTypes = {
-  characters: PropTypes.arrayOf(Character).isRequired,
+  characters: PropTypes.arrayOf(Character),
   setActiveCharacter: PropTypes.func.isRequired,
 }

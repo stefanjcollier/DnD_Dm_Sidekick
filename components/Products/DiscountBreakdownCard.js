@@ -42,6 +42,6 @@ export default function  DiscountBreakdownCard(props) {
 }
 
 DiscountBreakdownCard.propTypes = {
-  character: PropTypes.instanceOf(Character).isRequired,
+  character: PropTypes.instanceOf(Character),
   discount: PropTypes.number.isRequired,
 };
