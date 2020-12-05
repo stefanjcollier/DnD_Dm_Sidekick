@@ -17,7 +17,7 @@ import DiscountService from "services/DiscountService"
 import DiscountBreakdownCard from "components/Products/DiscountBreakdownCard";
 import BasketCard from "components/Products/BasketCard";
 import CharacterCards from "components/Products/CharacterCards";
-import ProductCard from "./ProductsCard";
+import ProductCard from "components/Products/ProductsCard";
 
 
 export default function Shop(props) {
