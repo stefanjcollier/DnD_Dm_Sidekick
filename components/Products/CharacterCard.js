@@ -18,7 +18,7 @@ export default function CharacterCard(props) {
   return (
     <Card>
       <CardHeader stats icon>
-        <CardAvatar profile className={classes.clickable} onClick={props.setActiveCharacter(props.character)}>
+        <CardAvatar profile className={classes.clickable} onClick={() => props.setActiveCharacter(props.character)}>
           <img alt={props.character.name} src={props.character.imageUrl}/>
         </CardAvatar>
       </CardHeader>
