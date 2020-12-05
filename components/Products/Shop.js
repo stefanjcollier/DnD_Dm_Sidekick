@@ -1,18 +1,8 @@
 import React, { useState, useEffect } from 'react';
-// @material-ui/core components
-import {makeStyles} from "@material-ui/core/styles";
-import AddShoppingCart from "@material-ui/icons/AddShoppingCart";
 
 // core CreativeTim components
-import Table from "components/CreativeTim/Table/Table.js";
-import Button from "components/CreativeTim/CustomButtons/Button.js";
-import Card from "components/CreativeTim/Card/Card.js";
-import CardHeader from "components/CreativeTim/Card/CardHeader.js";
-import CardBody from "components/CreativeTim/Card/CardBody.js";
-import CardAvatar from "components/CreativeTim/Card/CardAvatar.js";
 import GridContainer from "components/CreativeTim/Grid/GridContainer";
 import GridItem from "components/CreativeTim/Grid/GridItem";
-import PageChange from "components/CreativeTim/PageChange/PageChange";
 
 
 // Models
@@ -27,10 +17,7 @@ import DiscountService from "services/DiscountService"
 import DiscountBreakdownCard from "components/Products/DiscountBreakdownCard";
 import BasketCard from "components/Products/BasketCard";
 import CharacterCards from "components/Products/CharacterCards";
-
-import styles from "assets/jss/products.js";
 import ProductCard from "./ProductsCard";
-const useStyles = makeStyles(styles);
 
 
 export default function Shop(props) {
@@ -70,7 +57,6 @@ export default function Shop(props) {
 
     }, []
   );
-  const classes = useStyles();
 
   return (
     <GridContainer>
