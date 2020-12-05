@@ -26,7 +26,7 @@ import DiscountService from "services/DiscountService"
 // Components
 import DiscountBreakdownCard from "components/Products/DiscountBreakdownCard";
 import BasketCard from "components/Products/BasketCard";
-
+import CharacterCards from "components/Products/CharacterCards";
 
 import styles from "assets/jss/products.js";
 const useStyles = makeStyles(styles);
@@ -91,33 +91,12 @@ export default function Shop(props) {
   );
   const classes = useStyles();
 
-  const renderCharacters = () => {
-    return (characters.map( (character) => {
-      return (
-        <GridItem key={`Character-${character.id}`} xs={12} sm={5} md={3}>
-          <Card>
-            <CardHeader stats icon>
-              <CardAvatar profile className={classes.clickable} onClick={() => changeCharacter(character)}>
-                <img alt={character.name} src={character.imageUrl}/>
-              </CardAvatar>
-            </CardHeader>
-            <CardBody>
-              <h3 className={classes.cardTitle}>{character.name}</h3>
-              <div className={classes.stats}>
-                Reputation: {character.reputation.name}
-                <br/>
-                Charisma: {character.charismaModifierStr()}
-              </div>
-            </CardBody>
-          </Card>
-        </GridItem>
-      )}
-    ))
-  }
-
   return (
     <GridContainer>
-      {renderCharacters()}
+      <CharacterCards
+        characters={characters}
+        setActiveCharacter={changeCharacter}
+      />
       <GridItem xs={8} sm={8} md={8}>
         <Card>
           <CardHeader color="primary">
