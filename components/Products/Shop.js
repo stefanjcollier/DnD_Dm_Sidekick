@@ -29,6 +29,7 @@ import BasketCard from "components/Products/BasketCard";
 import CharacterCards from "components/Products/CharacterCards";
 
 import styles from "assets/jss/products.js";
+import ProductCard from "./ProductsCard";
 const useStyles = makeStyles(styles);
 
 
@@ -38,26 +39,6 @@ export default function Shop(props) {
   const [priceModifier, setPriceModifier] = useState(1);
   const [character, setCharacter] = useState(undefined)
   const [characters, setCharacters] = useState([])
-
-  const productList = () => {
-    return products.map( (product) => {
-        return [
-          product.name,
-          product.price_str,
-          product.weight_str,
-          <Button
-            color='success'
-            onClick={() => {
-              setBasket(basket.addToBasket(product))
-            }}
-          >
-            <AddShoppingCart/>
-          </Button>
-        ];
-      }
-    )
-  };
-
 
   const fetchPriceModifier = (character) => {
     const service = new DiscountService()
@@ -98,23 +79,11 @@ export default function Shop(props) {
         setActiveCharacter={changeCharacter}
       />
       <GridItem xs={8} sm={8} md={8}>
-        <Card>
-          <CardHeader color="primary">
-            <h4 className={classes.cardTitleWhite}>Products</h4>
-          </CardHeader>
-          <CardBody>
-
-            { products === undefined ?
-                <PageChange />
-              :
-                <Table
-                  tableHeaderColor="primary"
-                  tableHead={["Name", "Cost", "Weight (lbs)", '']}
-                  tableData={productList()}
-                />
-            }
-          </CardBody>
-        </Card>
+        <ProductCard
+          products={products}
+          basket={basket}
+          setBasket={setBasket}
+        />
       </GridItem>
 
       <GridItem xs={4} sm={4} md={4}>
