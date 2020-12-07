@@ -10,7 +10,7 @@ export default class Shop extends ApiModel{
   }
 
   static endpoint() {
-    return 'api/products/'
+    return 'api/shops/'
   }
 
   static fromObject(obj){
