@@ -60,7 +60,6 @@ export default function BasketCard(props) {
         color='danger'
         onClick={() => {
           const newBasket = props.basket.removeFromBasket(product)
-          console.log(props.setBasket)
           props.setBasket(newBasket)
         }}
       >
