@@ -20,7 +20,7 @@ import CharacterCards from "components/Products/CharacterCards";
 import ProductCard from "components/Products/ProductsCard";
 
 
-export default function Shop(props) {
+export default function AllProducts(props) {
   const [products, setProducts] = useState(undefined);
   const [basket, setBasket] = useState(new Basket());
   const [priceModifier, setPriceModifier] = useState(1);

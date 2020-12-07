@@ -8,7 +8,7 @@ import Card from "components/CreativeTim/Card/Card.js";
 import CardHeader from "components/CreativeTim/Card/CardHeader.js";
 import CardBody from "components/CreativeTim/Card/CardBody.js";
 // components
-import Shop from "components/Products/Shop";
+import AllProducts from "components/Products/AllProducts";
 
 import styles from "assets/jss/products.js";
 const useStyles = makeStyles(styles);
@@ -16,5 +16,5 @@ const useStyles = makeStyles(styles);
 export default function Home() {
   const classes = useStyles();
 
-  return(<Shop />);
+  return(<AllProducts />);
 }
