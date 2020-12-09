@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import GridContainer from "components/CreativeTim/Grid/GridContainer";
 import GridItem from "components/CreativeTim/Grid/GridItem";
 
-
 // Models
 import Product from "models/Product"
 import Basket from "models/Basket"
