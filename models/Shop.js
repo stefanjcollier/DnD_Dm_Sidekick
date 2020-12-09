@@ -15,7 +15,7 @@ export default class Shop extends ApiModel{
 
   static fromObject(obj){
     const products = Product.fromObjects(obj.products)
-    return new Shop(obj.id, obj.name, obj.weight, products)
+    return new Shop(obj.id, obj.name, obj.description, products)
   }
 
 }
