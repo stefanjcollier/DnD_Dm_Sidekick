@@ -9,6 +9,7 @@ import GridItem from "components/CreativeTim/Grid/GridItem";
 // Models
 import Shop from "models/Shop";
 import Basket from "models/Basket"
+import Character from "models/Character"
 
 // Services
 import DiscountService from "services/DiscountService"
@@ -53,6 +54,7 @@ function ShopView(props) {
   }
 
   useEffect(() => {
+    Character.fetchAll(setCharacters)
     Shop.fetch(props.id, setShop)
     }, []
   );
