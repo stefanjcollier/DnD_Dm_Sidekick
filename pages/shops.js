@@ -34,7 +34,7 @@ export default function Shops(props) {
         {/*</CardBody>*/}
         <CardFooter stats>
           <div className={classes.stats}>
-            <Link passHref href={`/shops/${encodeURIComponent(shop.id)}`} >
+            <Link passHref href={`/shop/${encodeURIComponent(shop.id)}`} >
               <Button color="info">
                 Go
               </Button>
