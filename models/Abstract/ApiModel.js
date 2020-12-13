@@ -19,17 +19,25 @@ export default class ApiModel extends Abstract{
   }
 
   static fetch(id, success, error){
-    this._get(`${this.endpoint()}/${id}/`,
+    this._get(`${this.normalisedEndpoint()}${id}/`,
       (rawObj) => success(this.fromObject(rawObj)),
       error
     )
   }
 
   static fetchAll(success, error){
-    this._get(this.endpoint(),
+    this._get(this.normalisedEndpoint(),
       (rawObjArray) => success(this.fromObjects(rawObjArray)),
       error
     )
+  }
+
+  static normalisedEndpoint() {
+    if (this.endpoint().substr(-1) !== '/') {
+      return `${this.endpoint()}/`
+    } else {
+      return this.endpoint()
+    }
   }
 
   static _get(endpoint, success, error){
