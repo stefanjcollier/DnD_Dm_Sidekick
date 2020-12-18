@@ -15,7 +15,7 @@ import styles from "assets/jss/shops";
 const useStyles = makeStyles(styles);
 
 
-export default function Shops(props) {
+export default function ShopIndex(props) {
   const classes = useStyles()
   const [shops, setShops] = useState([])
 
@@ -34,7 +34,7 @@ export default function Shops(props) {
         {/*</CardBody>*/}
         <CardFooter stats>
           <div className={classes.stats}>
-            <Link passHref href={`/shop/${encodeURIComponent(shop.id)}`} >
+            <Link passHref href={`/shops/${encodeURIComponent(shop.id)}`} >
               <Button color="info">
                 Go
               </Button>
