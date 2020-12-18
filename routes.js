@@ -3,12 +3,6 @@ import ShoppingCart from "@material-ui/icons/ShoppingCart";
 
 const dashboardRoutes = [
   {
-    path: "/products",
-    name: "Products",
-    rtlName: "",
-    icon: ShoppingCart,
-  },
-  {
     path: "/shops",
     name: "Shops",
     rtlName: "",
